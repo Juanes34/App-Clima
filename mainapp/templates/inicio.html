@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block title%}Inicio{%endblock%}
+
+{% block content %}
+{%load static%}
+<h1 id="ciudad">{{ciudad}}, {{pais}}</h1>
+<hr>
+<div class="primera-seccion">
+    <div class="imagen-temp">
+        <p>Clima el {{dia}}</p>
+        <div class="imagen">
+            <img src={{imagen_clima}}>
+            <h2 class="temperatura" id="temperatura">{{temp}}°C</h2>
+        </div>
+    </div>
+    <div class="variables">
+        <h2 class="clima" id="clima">{{clima}}</h2>
+        <hr>
+        <div id="humedad">
+            <h2 class="humedad">Humedad</h2>
+            <h2 class="humedad">{{humedad}} %</h2>
+        </div>
+        <hr>
+        <div id="presion">
+            <h2 class="presion">Presión</h2>
+            <h2 class="presion">{{presion}} hPa</h2>
+        </div>
+        <hr>
+        <div id="viento">
+            <h2 class="viento">Viento</h2>
+            <h2 class="viento">{{viento}} m/s</h2>
+        </div>
+        <hr>
+    </div>
+</div>
+<hr>
+<div class="segunda-seccion">
+    <h1>Clima en los próximos días</h1>
+    <div class="dias">
+        <img src="{%static "images/forecast.png"%}" >
+    </div>
+</div>
+{%endblock%}

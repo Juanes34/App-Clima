@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{%endblock%}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{%static 'css/styles.css'%}">
+    </head>
+    <body>
+        <header>
+            <div class="header" id="header">
+                <img src="static/images/logo_inicial.svg" alt="Logo app clima">
+                <h1>WeatherApp</h1>
+            </div>
+        </header>
+
+        <div class="contenido" id="contenido">
+            <div id="head">
+                <form action="{% url 'busqueda' %}" method="POST"> 
+                    {% csrf_token %}
+                    <select name="lugar" id="select">
+                        <option value="Vacio" selected></option>
+                        {% for location in localizaciones %}
+                            <option value={{location.nombre}}>{{location.nombre}}, {{location.pais}}</option>
+                        {%endfor%}
+                    </select>
+                    <input type="submit" value="Buscar">
+                </form>
+                <div id="cambio-temp">
+                    <button id="celcius" onclick="celcius_fn()" class="boton">°C</button>
+                    <p>|</p>
+                    <button id="farenheit" onclick="farenheit_fn()" class="boton">°F</button>
+                </div>
+            </div>
+            <div class="box">
+                {% block content %}
+                {%endblock%}
+            </div>
+        </div>
+        <footer>
+            <h1>App creada por Juan Herrera</h1>
+        </footer>
+        <script src="{%static 'js/functionalities.js'%}"></script>
+    </body>
+</html>
