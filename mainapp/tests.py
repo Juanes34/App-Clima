@@ -1,6 +1,6 @@
 from django.test import TestCase
 import unittest
-from views import get_location
+from functions import get_location
 # Create your tests here.
 
 class testeo_get_locations(unittest.TestCase):
